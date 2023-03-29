@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link rel="stylesheet" href="style.css" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div class="slideshow-container">
+      <div class="mySlides fade">
+        <div class="numbertext">1 / 5</div>
+        <img
+          src="https://th.bing.com/th/id/R.c68bbba9f3851d15c7d4eb793f08da25?rik=wHiaODmIH7DUMA&pid=ImgRaw&r=0" />
+        <div class="text">London, England</div>
+      </div>
+
+      <div class="mySlides fade">
+        <div class="numbertext">2 / 5</div>
+        <img
+          src="https://th.bing.com/th/id/OIP.1PM2mcniHI1zGhEXVxrq3QHaFj?pid=ImgDet&rs=1" />
+        <div class="text">Sunset in Romania</div>
+      </div>
+
+      <div class="mySlides fade">
+        <div class="numbertext">3 / 5</div>
+        <img
+          src="https://th.bing.com/th/id/OIP.xt9kuOWD4yhtN5jvu-CU7QHaE8?w=232&h=180&c=7&r=0&o=5&dpr=1.5&pid=1.7" />
+        <div class="text">Ninh Binh, Viet Nam</div>
+      </div>
+
+      <div class="mySlides fade">
+        <div class="numbertext">4 / 5</div>
+        <img
+          src="https://th.bing.com/th/id/R.b09e9d115f543c844712af88f8518a0e?rik=7F4elfusJPD3yw&pid=ImgRaw&r=0" />
+        <div class="text">New York, USA</div>
+      </div>
+
+      <div class="mySlides fade">
+        <div class="numbertext">5 / 5</div>
+        <img
+          src="https://th.bing.com/th/id/R.98a72335b55453ecc35b1fc960c2b703?rik=8rPbrcYnsXoKDg&riu=http%3a%2f%2fluxurylaunches.com%2fwp-content%2fuploads%2f2014%2f09%2fmontreal-1050x700.jpg&ehk=%2fpLiEAG4Fki8zpC%2fGQRCCVh0uT3mM%2fc3kfxHYSP%2bNDI%3d&risl=&pid=ImgRaw&r=0" />
+        <div class="text">montreal, Canada</div>
+      </div>
+
+      <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+      <a class="next" onclick="plusSlides(1)">&#10095;</a>
+    </div>
+    <br />
+    <div style="text-align: center">
+      <span class="dot" onclick="currentSlide(0)"></span>
+      <span class="dot" onclick="currentSlide(1)"></span>
+      <span class="dot" onclick="currentSlide(2)"></span>
+      <span class="dot" onclick="currentSlide(3)"></span>
+      <span class="dot" onclick="currentSlide(4)"></span>
+    </div>
+
+    <script>
+      let slideIndex = 0;
+      let timeoutId = null;
+      const slides = document.getElementsByClassName("mySlides");
+      const dots = document.getElementsByClassName("dot");
+
+      showSlides();
+      function currentSlide(index) {
+        slideIndex = index;
+        showSlides();
+      }
+      function plusSlides(step) {
+        if (step < 0) {
+          slideIndex -= 2;
+
+          if (slideIndex < 0) {
+            slideIndex = slides.length - 1;
+          }
+        }
+
+        showSlides();
+      }
+
+      function showSlides() {
+        for (let i = 0; i < slides.length; i++) {
+          slides[i].style.display = "none";
+          dots[i].classList.remove("active");
+        }
+        slideIndex++;
+        if (slideIndex > slides.length) {
+          slideIndex = 1;
+        }
+        slides[slideIndex - 1].style.display = "block";
+        dots[slideIndex - 1].classList.add("active");
+        if (timeoutId) {
+          clearTimeout(timeoutId);
+        }
+        timeoutId = setTimeout(showSlides, 5000); // Change image every 5 seconds
+      }
+    </script>
+  </body>
+</html>
